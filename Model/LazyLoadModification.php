@@ -53,6 +53,7 @@ class LazyLoadModification implements ModificationInterface
         $replaceData = [];
         foreach ($tagList as $tag) {
             /** @var $tag TagInterface */
+
             if ($this->canCssLazyLoading->execute($tag) === false) {
                 continue;
             }
