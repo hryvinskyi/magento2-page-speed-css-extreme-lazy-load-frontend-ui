@@ -58,6 +58,11 @@ class LazyLoadModification implements ModificationInterface
             return;
         }
 
+        if ($this->config->isDisableForPageTypes() === true
+            && in_array($this->request->getFullActionName(), $this->config->getDisableForPageTypes(), true) === true) {
+            return;
+        }
+
         $tagList = $this->cssFinder->findExternal($html);
         $replaceData = [];
         foreach ($tagList as $tag) {
