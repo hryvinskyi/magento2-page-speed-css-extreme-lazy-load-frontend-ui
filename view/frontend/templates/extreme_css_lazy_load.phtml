@@ -17,6 +17,10 @@ $configViewModel = $block->getData('configViewModel');
     (() => {
         function callback () {
             console.log('Extreme Lazy Load CSS is enabled');
+
+            document.removeEventListener('DOMContentLoaded', callback);
+            document.removeEventListener('LazyScriptsLoaded', callback);
+
             const links = document.querySelectorAll('link[rel="lazyload-css"]');
             <?php if ($configViewModel->getConfig()->isTimeOutEnabled() === true) : ?>
             let timeOut;
@@ -54,6 +58,7 @@ $configViewModel = $block->getData('configViewModel');
             callback();
         } else {
             document.addEventListener('DOMContentLoaded', callback);
+            document.addEventListener('LazyScriptsLoaded', callback);
         }
     })();
 </script>
