@@ -29,7 +29,7 @@ $delayEventContent = implode('', array_map(static function($delayEvent): string 
 $scriptContent = <<<JS
 (() => {
     function callback () {
-        console.log('Extreme Lazy Load CSS is enabled');
+        console.info('%c🚀 Extreme Lazy Load CSS is now active and ready!', 'color: #28a745; font-weight: bold; font-size: 12px;');
 
         document.removeEventListener('DOMContentLoaded', callback);
         document.removeEventListener('LazyScriptsLoaded', callback);
